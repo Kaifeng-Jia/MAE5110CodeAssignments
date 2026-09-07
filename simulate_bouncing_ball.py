@@ -1,23 +1,25 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from models import pendulum as model
-# from integrators import rk4 as integrator
-from integrators import explicit_euler as integrator
+from models import bouncing_ball as model
+from integrators import rk4 as integrator
+# from integrators import explicit_euler as integrator
 # Basic simulation of the pendulum
 
-params = {
-    "gravity": 9.81,  # gravity m/s^2)
-    "length": 1,  # rod length (m)
-    "mass": 0.2,  # point mass at end of rod (kg)
-    "damping_coeff": 0.0,  # damping coefficient (kg*m^2/s)
-}
+# params = {
+#     "gravity": 9.81,  # gravity m/s^2)
+#     "length": 1,  # rod length (m)
+#     "mass": 0.2,  # point mass at end of rod (kg)
+#     "damping_coeff": 0.0,  # damping coefficient (kg*m^2/s)
+# }
+
+params = model.generate_params()
 
 
 # some set-up
-initial_state = np.array([np.pi / 4, 0.0])
+initial_state = np.array([1.0, 0.0])
 
-timestep = 1e-2
+timestep = 1e-5
 sim_time = 5.0
 
 n_timesteps = int(sim_time / timestep) + 1
@@ -31,8 +33,9 @@ state_traj[:, 0] = initial_state
 #         t, state_traj[:, step], params
 #     )
 for step, t in enumerate(time_traj[:-1]):
-    state_traj[:, step + 1] = integrator.step(model.dynamics, t, state_traj[:,step], timestep, params)
+    state_after_integration = integrator.step(model.dynamics, t, state_traj[:, step], timestep, params)
 
+    state_traj[:, step+1] = model.resolve_collision(state_after_integration, params)
 # sanity check the energies: since there is no actuation, and no damping, total energy should stay
 # constant. If we turn on the damping coefficient, it should slowly bleed out energy until it comes to
 # a stand-still.
@@ -45,7 +48,7 @@ plt.plot(time_traj, kinetic_energy, label="Kinetic energy")
 plt.plot(time_traj, potential_energy + kinetic_energy, label="Total energy")
 plt.xlabel("Time (s)")
 plt.ylabel("Energy (J)")
-plt.title("Pendulum energy")
+plt.title("Bouncing ball energy")
 plt.legend()
 plt.tight_layout()
 plt.show()
