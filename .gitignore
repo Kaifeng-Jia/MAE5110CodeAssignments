@@ -6,3 +6,5 @@ __pycache__/
 .pytest_cache/
 uv.lock
 assignments_tex/
+.venv.broken-*/
+assignments/assignment_*/scratch/
