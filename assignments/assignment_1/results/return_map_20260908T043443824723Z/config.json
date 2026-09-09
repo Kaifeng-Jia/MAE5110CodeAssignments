@@ -1,0 +1,40 @@
+{
+  "parameters": {
+    "gravity": 9.81,
+    "spoke_length": 1.0,
+    "hub_mass": 1.0,
+    "spoke_count": 8,
+    "slope_angle": 0.2617993877991494
+  },
+  "initial_state": [
+    -0.13089969389957473,
+    0.5
+  ],
+  "simulation": {
+    "number_of_steps": 30,
+    "time_step": 0.01,
+    "max_time": 30.0
+  },
+  "section": "Immediately after forward contact",
+  "units": {
+    "angle": "rad",
+    "angular_velocity": "rad/s",
+    "time": "s"
+  },
+  "prediction": "Post-impact speeds approach the rolling value near 1.971435 rad/s",
+  "fixed_point_estimation": "Final post-impact speed; retain the last speed change",
+  "floquet": {
+    "velocity_perturbation": 0.01,
+    "number_of_steps": 1,
+    "method": "Centered difference across the fixed-point estimate",
+    "prediction": "Local slope near 0.5"
+  },
+  "run_id": "return_map_20260908T043443824723Z",
+  "environment": {
+    "python": "3.14.7",
+    "numpy": "2.5.2",
+    "matplotlib": "3.11.1"
+  },
+  "source_snapshot": "source.zip",
+  "source_sha256": "42c118e91752fb438b706e1987448585c52258a4aece8b6cf0fd0f23abd5fa36"
+}
