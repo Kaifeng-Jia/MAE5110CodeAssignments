@@ -8,3 +8,11 @@ uv.lock
 assignments_tex/
 .venv.broken-*/
 assignments/assignment_*/scratch/
+assignments/assignment_*/archive/
+
+# Assignment 2 figures, numerical tables, and compiled report are reproducible.
+output/
+tmp/pdfs/
+
+# Keep Assignment 2 Markdown local.
+/assignments/assignment_2/**/*.md
