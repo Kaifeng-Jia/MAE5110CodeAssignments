@@ -14,5 +14,6 @@ assignments/assignment_*/archive/
 output/
 tmp/pdfs/
 
-# Keep Assignment 2 Markdown local.
+# Keep Assignment 2 Markdown local except the report README.
 /assignments/assignment_2/**/*.md
+!/assignments/assignment_2/README.md
