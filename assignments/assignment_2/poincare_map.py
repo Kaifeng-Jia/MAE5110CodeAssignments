@@ -1,7 +1,7 @@
 import json
-import shutil
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 from controllers import (
     compute_maximum_step_policy,
@@ -159,6 +159,20 @@ def print_step_policy(
         print(f"{velocity:>16.4f} | {steps:>12.0f} | {action:>16}")
 
 
+def plot_minimum_steps(initial_velocities, minimum_steps):
+    """Plot the minimum step count at each sampled initial velocity."""
+    fig, ax = plt.subplots(figsize=(7, 4), layout="constrained")
+    ax.plot(initial_velocities, minimum_steps, "o", color="tab:blue")
+    ax.set(
+        xlabel=r"Initial angular velocity $\omega_0$ (rad/s)",
+        ylabel="Minimum steps to reach RoA",
+        title="Minimum steps on the sampled grid",
+        yticks=np.arange(minimum_steps.max() + 1),
+    )
+    ax.grid(alpha=0.2)
+    return fig
+
+
 def save_transition_table(
     initial_velocities,
     angle_of_attack_values,
@@ -171,7 +185,7 @@ def save_transition_table(
     maximum_selected_angles,
     configuration,
 ):
-    """Save transitions, policy estimates, settings, and source files."""
+    """Save transitions, policy estimates, and settings."""
     folder = Path(__file__).resolve().parent
     output = folder / "output" / "transition_table"
     output.mkdir(parents=True, exist_ok=True)
@@ -190,15 +204,6 @@ def save_transition_table(
     (output / "config.json").write_text(
         json.dumps(configuration, indent=2) + "\n", encoding="utf-8"
     )
-    for relative_path in (
-        "poincare_map.py",
-        "controllers.py",
-        "models/__init__.py",
-        "models/inverted_pendulum_walker.py",
-    ):
-        target = output / "source" / relative_path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(folder / relative_path, target)
     return output
 
 
@@ -272,3 +277,6 @@ if __name__ == "__main__":
     print(
         f"Saved {next_velocities.shape[0]} x {next_velocities.shape[1]} table: {output}"
     )
+    figure = plot_minimum_steps(initial_velocities, minimum_steps)
+    figure.savefig(output / "minimum_steps.png", dpi=200)
+    plt.show()

@@ -1,6 +1,4 @@
 import json
-import shutil
-from datetime import UTC, datetime
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -156,11 +154,10 @@ def print_rollout(initial_velocity, policy_name, predicted_steps, history, reach
 
 
 def save_comparison(rollouts, configuration, figure):
-    """Save both trajectories, histories, settings, figure, and source files."""
+    """Save both trajectories, histories, settings, and figure."""
     folder = Path(__file__).resolve().parent
-    run_name = datetime.now(UTC).strftime("policy_comparison_%Y%m%dT%H%M%S%fZ")
-    output = folder / "output" / run_name
-    output.mkdir(parents=True)
+    output = folder / "output" / "policy_comparison"
+    output.mkdir(parents=True, exist_ok=True)
     results = {
         name: {key: value for key, value in rollout.items() if key != "trajectory"}
         for name, rollout in rollouts.items()
@@ -179,16 +176,6 @@ def save_comparison(rollouts, configuration, figure):
         },
     )
     figure.savefig(output / "phase_comparison.png", dpi=200)
-    for relative_path in (
-        "simulate_policy.py",
-        "poincare_map.py",
-        "controllers.py",
-        "models/__init__.py",
-        "models/inverted_pendulum_walker.py",
-    ):
-        target = output / "source" / relative_path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(folder / relative_path, target)
     return output
 
 

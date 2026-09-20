@@ -1,5 +1,4 @@
 import json
-import shutil
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -55,7 +54,7 @@ def plot_roa(initial_states, converged):
 
 
 def save_results(fig, initial_states, final_states, converged, fallen, configuration):
-    """Save the figure, data, configuration, and source files."""
+    """Save the figure, data, and configuration."""
     folder = Path(__file__).resolve().parent
     output = folder / "output" / "balance_roa"
     output.mkdir(parents=True, exist_ok=True)
@@ -70,15 +69,6 @@ def save_results(fig, initial_states, final_states, converged, fallen, configura
     (output / "config.json").write_text(
         json.dumps(configuration, indent=2) + "\n", encoding="utf-8"
     )
-    for relative_path in (
-        "analyze_balance_roa.py",
-        "controllers.py",
-        "models/__init__.py",
-        "models/inverted_pendulum_walker.py",
-    ):
-        target = output / "source" / relative_path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(folder / relative_path, target)
 
 
 def main():
