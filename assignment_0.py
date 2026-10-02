@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from models import pendulum as model
 
 #Numerical Integrator
-# from integrators import explicit_euler, rk4
+from integrators import explicit_euler, rk4
 from integrators import rk4 as integrator
 
 
@@ -44,8 +44,8 @@ state_traj[:, 0] = initial_state
 #rk4:
 for step, t in enumerate(time_traj[:-1]):
     state_traj[:, step + 1] = integrator(
-        model.dynamics, t, state_traj[:, step], params, timestep
-)
+        model.dynamics, t, state_traj[:, step], timestep, params
+    )
 
 
 #Stability Test
@@ -60,7 +60,7 @@ def simulate(model, integrator, initial_state, params, dt, sim_time):
 
     for step, t in enumerate(time[:-1]):
         state[:, step + 1] = integrator(
-            model.dynamics, t, state[:, step], params, dt
+            model.dynamics, t, state[:, step], dt, params
         )
 
     return time, state
@@ -114,12 +114,12 @@ plt.show()
 import timeit
 
 euler_time = timeit.timeit(
-    lambda: explicit_euler(model.dynamics, 0, state_traj[:, 0], params, timestep),
+    lambda: explicit_euler(model.dynamics, 0, state_traj[:, 0], timestep, params),
     number=1000
 )
 
 rk4_time = timeit.timeit(
-    lambda: rk4(model.dynamics, 0, state_traj[:, 0], params, timestep),
+    lambda: rk4(model.dynamics, 0, state_traj[:, 0], timestep, params),
     number=1000
 )
 
