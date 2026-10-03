@@ -1,0 +1,87 @@
+{
+  "scope": "Slope comparison with eight spokes",
+  "prediction": "Standing basin shrinks as slope increases and disappears at 25 degrees",
+  "parameters": {
+    "gravity": 9.81,
+    "spoke_length": 1.0,
+    "hub_mass": 1.0,
+    "spoke_count": 8,
+    "slope_angle": 0.4363323129985824
+  },
+  "units": {
+    "angle": "rad",
+    "angular_velocity": "rad/s",
+    "time": "s",
+    "gravity": "m/s^2",
+    "spoke_length": "m",
+    "hub_mass": "kg"
+  },
+  "grid": {
+    "angle_min": 0.043633231299858244,
+    "angle_max": 0.8290313946973065,
+    "angle_count": 31,
+    "angular_velocity_min": -3.0,
+    "angular_velocity_max": 3.0,
+    "angular_velocity_count": 31
+  },
+  "simulation": {
+    "number_of_steps": 30,
+    "time_step": 0.01,
+    "max_time": 30.0,
+    "standing_velocity_tolerance": 0.0001
+  },
+  "event_angle_tolerance": 1e-12,
+  "event_time_tolerance": 1e-12,
+  "outcome_codes": {
+    "0": "unresolved",
+    "1": "standing",
+    "2": "rolling"
+  },
+  "plot": "Separate standing and rolling basin maps; other outcomes left blank",
+  "classification": {
+    "minimum_impacts": 10,
+    "recent_changes": 5,
+    "velocity_tolerance": 1e-06,
+    "standing": "Contact boundary, near-zero speed, below both tipping barriers"
+  },
+  "return_map": {
+    "parameters": {
+      "gravity": 9.81,
+      "spoke_length": 1.0,
+      "hub_mass": 1.0,
+      "spoke_count": 8,
+      "slope_angle": 0.4363323129985824
+    },
+    "initial_state": [
+      0.043633231299858244,
+      2.0
+    ],
+    "simulation": {
+      "number_of_steps": 30,
+      "time_step": 0.01,
+      "max_time": 30.0
+    },
+    "section": "Immediately after forward contact",
+    "units": {
+      "angle": "rad",
+      "angular_velocity": "rad/s",
+      "time": "s"
+    },
+    "prediction": "Rolling speed increases with slope; local slope stays near 0.5",
+    "fixed_point_estimation": "Final post-impact speed; retain the last speed change",
+    "floquet": {
+      "velocity_perturbation": 0.01,
+      "number_of_steps": 1,
+      "method": "Centered difference across the fixed-point estimate",
+      "prediction": "Local slope near 0.5"
+    }
+  },
+  "run_id": "slope_25deg",
+  "environment": {
+    "python": "3.14.7",
+    "numpy": "2.5.2",
+    "matplotlib": "3.11.1"
+  },
+  "source_snapshot": "source.zip",
+  "source_sha256": "2d55716ab00a6427c130b9b4711ceda62b8e1bc3e787ba2a21c4d6d465f487cf"
+}

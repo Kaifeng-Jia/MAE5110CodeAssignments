@@ -60,7 +60,7 @@ I integrate with RK4 at a maximum timestep of $`0.01\ \mathrm{s}`$ and locate co
 
 ### Sanity checks
 
-The three checks in [check_model.py](assignments/assignment_1/check_model.py) passed at the baseline parameters.
+The three checks in [check_model.py](check_model.py) passed at the baseline parameters.
 
 | Check | Expected behavior | Observed result |
 | --- | --- | --- |
@@ -80,7 +80,7 @@ I simulate a $`31\times31`$ grid over $`\theta\in[\theta^+,\theta^-]`$ and $`\om
 
 In all basin figures, blue denotes standing and orange rolling; white means outside the displayed basin, including unresolved points, and gray marks unsampled angles. Shared axes use the actual stance angle.
 
-![Baseline standing and rolling regions of attraction](assignments/assignment_1/figures/report_figures_20260908T052502637275Z/baseline_roa.png)
+![Baseline standing and rolling regions of attraction](figures/report_figures_20260908T052502637275Z/baseline_roa.png)
 
 *Figure 1. At $`N=8`$, $`\gamma=15^\circ`$, the grid spans $`-7.5^\circ`$ to $`37.5^\circ`$: 80 initial states approach standing and 880 approach rolling. The remaining point, $`(0,0)`$, is the unstable upright equilibrium and stays unchanged until the time limit.*
 
@@ -88,7 +88,7 @@ In all basin figures, blue denotes standing and orange rolling; white means outs
 
 On the section immediately after forward contact, $`\theta=\theta^+`$ is fixed, so the return map is scalar: $`x_{n+1}=P(x_n)`$ with $`x_n=\omega_n^+`$. Starting at $`x_0=0.5\ \mathrm{rad/s}`$, 30 impacts give 30 adjacent velocity pairs.
 
-![Return-map samples, identity line, and estimated fixed point](assignments/assignment_1/figures/report_figures_20260908T052502637275Z/return_map.png)
+![Return-map samples, identity line, and estimated fixed point](figures/report_figures_20260908T052502637275Z/return_map.png)
 
 *Figure 2. Samples from one trajectory approach the identity line. The red circle marks the fixed-point estimate $`x^*\approx1.971434911\ \mathrm{rad/s}`$, taken from the final simulated velocity; the last change is $`8.60\times10^{-10}\ \mathrm{rad/s}`$.*
 
@@ -134,7 +134,7 @@ At the baseline, $`\hat\lambda=0.499998`$, agreeing with the prediction $`0.5`$:
 
 I compare $`\gamma=5^\circ,15^\circ,25^\circ`$ at $`N=8`$, retaining the grid, timestep, classification criteria, and 30-impact/30-s limits. Fixed-point trajectories start at $`[\theta^+,2\ \mathrm{rad/s}]`$; Floquet perturbations remain $`\pm0.01\ \mathrm{rad/s}`$.
 
-![Standing and rolling regions of attraction across slopes](assignments/assignment_1/figures/report_figures_20260908T052502637275Z/slope_roa.png)
+![Standing and rolling regions of attraction across slopes](figures/report_figures_20260908T052502637275Z/slope_roa.png)
 
 *Figure 3. Columns show increasing slope; rows show standing and rolling.*
 
@@ -152,11 +152,11 @@ I compare $`N=6,\ldots,12`$ at $`\gamma=15^\circ`$, keeping the same grid size, 
 
 More spokes give a larger predicted $`\lambda`$ and slower convergence per impact. In the same saved $`N=12`$ trajectory, the maximum of the latest five velocity changes is $`1.30\times10^{-4}\ \mathrm{rad/s}`$ at impact 30 and $`2.32\times10^{-8}\ \mathrm{rad/s}`$ at impact 60; only the latter meets the unchanged $`10^{-6}`$ criterion. The longer time limit also accommodates slower trajectories, such as the $`N=6`$ fixed-point run taking $`44.98\ \mathrm{s}`$.
 
-![Standing regions of attraction across spoke counts](assignments/assignment_1/figures/report_figures_20260908T052502637275Z/spokes_standing_roa.png)
+![Standing regions of attraction across spoke counts](figures/report_figures_20260908T052502637275Z/spokes_standing_roa.png)
 
 *Figure 4. Standing basins for 6–12 spokes; the basin disappears at $`N=12`$, where $`\gamma=\alpha=15^\circ`$.*
 
-![Rolling regions of attraction across spoke counts](assignments/assignment_1/figures/report_figures_20260908T052502637275Z/spokes_rolling_roa.png)
+![Rolling regions of attraction across spoke counts](figures/report_figures_20260908T052502637275Z/spokes_rolling_roa.png)
 
 *Figure 5. Rolling basins in the same panel order; the sampled contact-angle interval narrows as $`N`$ increases.*
 
@@ -172,8 +172,8 @@ More spokes give a larger predicted $`\lambda`$ and slower convergence per impac
 
 More spokes reduce the kinetic-energy loss per collision, increasing the steady rolling speed and the rolling share of sampled states. The unresolved points at $`N=8`$ and $`N=12`$ are the exact unstable upright state $`(0,0)`$. Basin boundaries are approximate: the angular sampling width is $`2\pi/N`$, so these counts describe each sampled window rather than global probabilities or absolute basin areas.
 
-![Floquet multiplier versus slope and spoke count](assignments/assignment_1/figures/report_figures_20260908T052502637275Z/floquet_comparison.png)
+![Floquet multiplier versus slope and spoke count](figures/report_figures_20260908T052502637275Z/floquet_comparison.png)
 
 *Figure 6. Numerical multipliers stay near $`0.5`$ across slopes and rise from $`0.25`$ to $`0.75`$ across spoke counts, agreeing with $`\lambda=\cos^2(2\pi/N)`$. All cases are locally stable because $`|\lambda|<1`$; larger $`\lambda`$ means slower convergence per impact.*
 
-Experiments: [baseline](assignments/assignment_1/results/roa_20260908T040439975194Z/config.json), [return map](assignments/assignment_1/results/return_map_20260908T043443824723Z/config.json), [slope sweep](assignments/assignment_1/results/slope_sweep_20260908T044528669557Z/summary.json), [spoke sweep](assignments/assignment_1/results/spoke_sweep_20260908T050144131805Z/summary.json), and [report figure sources](assignments/assignment_1/results/report_figures_20260908T052502637275Z/config.json).
+Experiments: [baseline](results/roa_20260908T040439975194Z/config.json), [return map](results/return_map_20260908T043443824723Z/config.json), [slope sweep](results/slope_sweep_20260908T044528669557Z/summary.json), [spoke sweep](results/spoke_sweep_20260908T050144131805Z/summary.json), and [report figure sources](results/report_figures_20260908T052502637275Z/config.json).

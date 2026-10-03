@@ -1,0 +1,34 @@
+{
+  "scope": "Report figures drawn from saved results",
+  "sources": {
+    "baseline": "roa_20260908T040439975194Z",
+    "return_map": "return_map_20260908T043443824723Z",
+    "slopes": "slope_sweep_20260908T044528669557Z",
+    "spokes": "spoke_sweep_20260908T050144131805Z"
+  },
+  "layouts": {
+    "baseline": [
+      1,
+      2
+    ],
+    "slopes": [
+      2,
+      3
+    ],
+    "spokes": [
+      2,
+      4
+    ]
+  },
+  "axes": "Absolute stance angle; common limits within each comparison",
+  "colors": "Blue standing; orange rolling; gray outside sampled angle interval",
+  "blank_regions": "Initial states not in the basin shown, including unresolved states",
+  "run_id": "report_figures_20260908T052502637275Z",
+  "environment": {
+    "python": "3.14.7",
+    "numpy": "2.5.2",
+    "matplotlib": "3.11.1"
+  },
+  "source_snapshot": "source.zip",
+  "source_sha256": "c2b982cf24985b5ece94557f06d9e045808627921180c9ccc81500cd9dc4896d"
+}

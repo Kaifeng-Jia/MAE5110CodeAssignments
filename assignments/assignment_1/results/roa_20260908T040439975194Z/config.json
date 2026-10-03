@@ -1,0 +1,55 @@
+{
+  "scope": "RoA grid for the configured slope and spoke count",
+  "prediction": "Standing and rolling basins, with rocking at low energy",
+  "parameters": {
+    "gravity": 9.81,
+    "spoke_length": 1.0,
+    "hub_mass": 1.0,
+    "spoke_count": 8,
+    "slope_angle": 0.2617993877991494
+  },
+  "units": {
+    "angle": "rad",
+    "angular_velocity": "rad/s",
+    "time": "s",
+    "gravity": "m/s^2",
+    "spoke_length": "m",
+    "hub_mass": "kg"
+  },
+  "grid": {
+    "angle_min": -0.13089969389957473,
+    "angle_max": 0.6544984694978735,
+    "angle_count": 31,
+    "angular_velocity_min": -3.0,
+    "angular_velocity_max": 3.0,
+    "angular_velocity_count": 31
+  },
+  "simulation": {
+    "number_of_steps": 30,
+    "time_step": 0.01,
+    "max_time": 30.0,
+    "standing_velocity_tolerance": 0.0001
+  },
+  "event_angle_tolerance": 1e-12,
+  "event_time_tolerance": 1e-12,
+  "outcome_codes": {
+    "0": "unresolved",
+    "1": "standing",
+    "2": "rolling"
+  },
+  "plot": "Separate standing and rolling basin maps; other outcomes left blank",
+  "classification": {
+    "minimum_impacts": 10,
+    "recent_changes": 5,
+    "velocity_tolerance": 1e-06,
+    "standing": "Contact boundary, near-zero speed, below both tipping barriers"
+  },
+  "run_id": "roa_20260908T040439975194Z",
+  "environment": {
+    "python": "3.14.7",
+    "numpy": "2.5.2",
+    "matplotlib": "3.11.1"
+  },
+  "source_snapshot": "source.zip",
+  "source_sha256": "b2c993609ae7b60bf5798b96fe59a78b5b78d243e6948a3b3f671cbc0cc176d2"
+}

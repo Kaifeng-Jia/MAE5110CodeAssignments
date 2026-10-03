@@ -1,0 +1,32 @@
+[
+  {
+    "slope_degrees": 5,
+    "case_directory": "slope_05deg",
+    "standing_count": 495,
+    "rolling_count": 466,
+    "unresolved_count": 0,
+    "fixed_point_estimate": 1.1440166191476653,
+    "last_velocity_change": 1.095235013792717e-09,
+    "floquet_multiplier": 0.4999952238932015
+  },
+  {
+    "slope_degrees": 15,
+    "case_directory": "slope_15deg",
+    "standing_count": 80,
+    "rolling_count": 880,
+    "unresolved_count": 1,
+    "fixed_point_estimate": 1.9714349119400174,
+    "last_velocity_change": 2.8028246390476852e-11,
+    "floquet_multiplier": 0.4999983828796517
+  },
+  {
+    "slope_degrees": 25,
+    "case_directory": "slope_25deg",
+    "standing_count": 0,
+    "rolling_count": 961,
+    "unresolved_count": 0,
+    "fixed_point_estimate": 2.519175688884992,
+    "last_velocity_change": 4.3352166301247053e-10,
+    "floquet_multiplier": 0.49999900488251203
+  }
+]

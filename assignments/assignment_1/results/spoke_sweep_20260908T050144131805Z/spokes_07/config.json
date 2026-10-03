@@ -1,0 +1,93 @@
+{
+  "scope": "Spoke-count comparison at a 15-degree slope",
+  "prediction": "Standing basin shrinks and loses stability at twelve spokes",
+  "parameters": {
+    "gravity": 9.81,
+    "spoke_length": 1.0,
+    "hub_mass": 1.0,
+    "spoke_count": 7,
+    "slope_angle": 0.2617993877991494
+  },
+  "units": {
+    "angle": "rad",
+    "angular_velocity": "rad/s",
+    "time": "s",
+    "gravity": "m/s^2",
+    "spoke_length": "m",
+    "hub_mass": "kg"
+  },
+  "grid": {
+    "angle_min": -0.18699956271367818,
+    "angle_max": 0.7105983383119769,
+    "angle_count": 31,
+    "angular_velocity_min": -3.0,
+    "angular_velocity_max": 3.0,
+    "angular_velocity_count": 31
+  },
+  "simulation": {
+    "number_of_steps": 60,
+    "time_step": 0.01,
+    "max_time": 60.0,
+    "standing_velocity_tolerance": 0.0001
+  },
+  "event_angle_tolerance": 1e-12,
+  "event_time_tolerance": 1e-12,
+  "outcome_codes": {
+    "0": "unresolved",
+    "1": "standing",
+    "2": "rolling"
+  },
+  "plot": "Separate standing and rolling basin maps; other outcomes left blank",
+  "classification": {
+    "minimum_impacts": 10,
+    "recent_changes": 5,
+    "velocity_tolerance": 1e-06,
+    "standing": "Contact boundary, near-zero speed, below both tipping barriers"
+  },
+  "simulation_limit_change": {
+    "previous_number_of_steps": 30,
+    "previous_max_time": 30.0,
+    "reason": "More spokes give slower convergence per impact"
+  },
+  "return_map": {
+    "parameters": {
+      "gravity": 9.81,
+      "spoke_length": 1.0,
+      "hub_mass": 1.0,
+      "spoke_count": 7,
+      "slope_angle": 0.2617993877991494
+    },
+    "initial_state": [
+      -0.18699956271367818,
+      2.0
+    ],
+    "simulation": {
+      "number_of_steps": 60,
+      "time_step": 0.01,
+      "max_time": 60.0,
+      "standing_velocity_tolerance": 0.0001
+    },
+    "section": "Immediately after forward contact",
+    "units": {
+      "angle": "rad",
+      "angular_velocity": "rad/s",
+      "time": "s"
+    },
+    "prediction": "Rolling speed increases with spoke count",
+    "fixed_point_estimation": "Final post-impact speed; retain the last speed change",
+    "floquet": {
+      "velocity_perturbation": 0.01,
+      "number_of_steps": 1,
+      "method": "Centered difference across the fixed-point estimate",
+      "prediction": "Local slope near 0.388740"
+    }
+  },
+  "run_id": "spokes_07",
+  "environment": {
+    "python": "3.14.7",
+    "numpy": "2.5.2",
+    "matplotlib": "3.11.1"
+  },
+  "source_snapshot": "source.zip",
+  "source_sha256": "670aa025ec27f3379979d63dd969508b3cfab5ce0035787343a35cd122dbdeb4"
+}
