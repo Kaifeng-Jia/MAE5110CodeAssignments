@@ -18,3 +18,7 @@ tmp/pdfs/
 # Keep Assignment 2 Markdown local except the report README.
 /assignments/assignment_2/**/*.md
 !/assignments/assignment_2/README.md
+
+# Assignment 3 package and notebook caches.
+*.egg-info/
+__marimo__/
