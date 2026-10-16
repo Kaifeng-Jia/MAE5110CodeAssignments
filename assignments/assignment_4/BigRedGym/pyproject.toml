@@ -1,0 +1,119 @@
+[project]
+name = "q2"
+version = "0.1.0"
+requires-python = "==3.11.*"
+dependencies = [
+    "mujoco>=3.6",
+    "torch",
+    "tensordict",
+    "numpy",
+    "wandb",
+    "pandas",
+    "matplotlib",
+    "marimo>=0.23.16",
+]
+
+[project.optional-dependencies]
+gpu = ["mujoco-warp>=3.6"]
+# Go2 hardware deployment uses Linux timerfd and the official SDK's DDS stack.
+# Upstream wheels omit native CRC libraries; use the pinned editable checkout.
+# Fetch it with scripts/fetch_unitree_sdk.py before enabling this extra.
+unitree_sdk = [
+    "unitree-sdk2py==1.0.1; sys_platform == 'linux' and (platform_machine == 'x86_64' or platform_machine == 'aarch64')",
+]
+# VSim: licensed local engine for Linux x86_64 / Python 3.11.
+# See thirdparty/README.md; install with uv sync --frozen --extra vsim.
+# Requires system libczmq4 and a valid node-locked license.
+vsim = [
+    "vlearn; sys_platform == 'linux' and platform_machine == 'x86_64' and python_version == '3.11'",
+]
+
+[dependency-groups]
+profiling = ["py-spy>=0.4.1"]
+dev = [
+    "pre-commit>=4.5.1",
+    "pytest",
+    "ruff>=0.15.9",
+    "mujoco-warp>=3.6",
+    "marimo>=0.9",
+]
+
+[tool.uv.sources]
+# Vendored in-repo (gitignored — see thirdparty/README.md for the drop-in
+# procedure on a new machine).
+vlearn = { path = "thirdparty/vlearn/vlearn-0.3.15+cu130-cp311-cp311-linux_x86_64.whl" }
+unitree-sdk2py = { path = "thirdparty/unitree_sdk2_python", editable = true }
+
+[tool.q2.unitree-sdk]
+# Consumed by scripts/fetch_unitree_sdk.py; keep dependency setup in this file.
+git = "https://github.com/unitreerobotics/unitree_sdk2_python.git"
+rev = "65691c8a8bc53b98d3976dba4dbf9d5d20b2e7f5"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gym*", "learning*", "go2_deploy*"]
+namespaces = true
+
+[tool.pytest.ini_options]
+# pythonpath: the console-script `pytest` does NOT put the CWD on sys.path
+# (unlike `python -m pytest`), and the test tree imports absolutely
+# (`from tests.unit_tests...`) — without this, bare `pytest` can't load conftest.
+pythonpath = ["."]
+testpaths = ["tests/unit_tests"]
+# The default gate is deterministic and portable: pure tests plus MuJoCo CPU.
+# Hardware-specific dependencies are selected explicitly with the matching marker.
+addopts = ["--strict-markers", "-m", "not warp and not vsim and not unitree"]
+markers = [
+    "warp: requires MuJoCo Warp on CUDA",
+    "vsim: requires the licensed VSim backend on CUDA",
+    "unitree: requires the optional Unitree SDK on Linux (no robot connection)",
+]
+
+[tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "__init__.py",
+    "logs/",
+    "notebooks/",
+    "thirdparty/",
+]
+
+line-length = 88
+indent-width = 4
+
+target-version = "py311"
+
+[tool.ruff.lint]
+ignore = ["E722"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+select = ["E", "F", "W", "E4", "E7", "E9", "F"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

@@ -1,0 +1,38 @@
+{
+  "duration_s": 20.0,
+  "samples": 2000,
+  "mae_m": 0.04233244343847036,
+  "rmse_m": 0.04897969869935594,
+  "max_absolute_error_m": 0.1410287767648697,
+  "termination_seen": false,
+  "stages": [
+    {
+      "stage": "LOW 1/2",
+      "target_height_m": 0.20000000298023224,
+      "last_second_mean_height_m": 0.20752124682068826,
+      "last_second_mae_m": 0.014436354488134384,
+      "last_second_std_m": 0.014517894997435254
+    },
+    {
+      "stage": "HIGH 1/2",
+      "target_height_m": 0.44999998807907104,
+      "last_second_mean_height_m": 0.39004038959741594,
+      "last_second_mae_m": 0.05995959848165512,
+      "last_second_std_m": 0.0031410649158822228
+    },
+    {
+      "stage": "LOW 2/2",
+      "target_height_m": 0.20000000298023224,
+      "last_second_mean_height_m": 0.21841512247920036,
+      "last_second_mae_m": 0.018415119498968124,
+      "last_second_std_m": 0.007177544998730828
+    },
+    {
+      "stage": "HIGH 2/2",
+      "target_height_m": 0.44999998807907104,
+      "last_second_mean_height_m": 0.3878244861960411,
+      "last_second_mae_m": 0.062175501883029935,
+      "last_second_std_m": 0.009655597977563487
+    }
+  ]
+}

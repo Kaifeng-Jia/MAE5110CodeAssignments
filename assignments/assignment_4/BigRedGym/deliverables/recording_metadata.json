@@ -1,0 +1,172 @@
+{
+  "experiment": "a4_height_full_v1",
+  "run": "Oct15_01-26-07_",
+  "checkpoint": 550,
+  "training_seed": 3624,
+  "playback_seed": 42,
+  "simulated_seconds": 20,
+  "sample_dt_s": 0.01,
+  "samples": 2000,
+  "velocity_commands_zero": true,
+  "terminated_any": false,
+  "key_events": [
+    {
+      "time_s": 5.0,
+      "key": "up"
+    },
+    {
+      "time_s": 5.05,
+      "key": "up"
+    },
+    {
+      "time_s": 5.1000000000000005,
+      "key": "up"
+    },
+    {
+      "time_s": 5.15,
+      "key": "up"
+    },
+    {
+      "time_s": 5.2,
+      "key": "up"
+    },
+    {
+      "time_s": 5.25,
+      "key": "up"
+    },
+    {
+      "time_s": 5.3,
+      "key": "up"
+    },
+    {
+      "time_s": 5.3500000000000005,
+      "key": "up"
+    },
+    {
+      "time_s": 5.4,
+      "key": "up"
+    },
+    {
+      "time_s": 5.45,
+      "key": "up"
+    },
+    {
+      "time_s": 5.5,
+      "key": "up"
+    },
+    {
+      "time_s": 5.55,
+      "key": "up"
+    },
+    {
+      "time_s": 5.6000000000000005,
+      "key": "up"
+    },
+    {
+      "time_s": 10.0,
+      "key": "down"
+    },
+    {
+      "time_s": 10.05,
+      "key": "down"
+    },
+    {
+      "time_s": 10.1,
+      "key": "down"
+    },
+    {
+      "time_s": 10.15,
+      "key": "down"
+    },
+    {
+      "time_s": 10.200000000000001,
+      "key": "down"
+    },
+    {
+      "time_s": 10.25,
+      "key": "down"
+    },
+    {
+      "time_s": 10.3,
+      "key": "down"
+    },
+    {
+      "time_s": 10.35,
+      "key": "down"
+    },
+    {
+      "time_s": 10.4,
+      "key": "down"
+    },
+    {
+      "time_s": 10.450000000000001,
+      "key": "down"
+    },
+    {
+      "time_s": 10.5,
+      "key": "down"
+    },
+    {
+      "time_s": 10.55,
+      "key": "down"
+    },
+    {
+      "time_s": 10.6,
+      "key": "down"
+    },
+    {
+      "time_s": 15.0,
+      "key": "up"
+    },
+    {
+      "time_s": 15.05,
+      "key": "up"
+    },
+    {
+      "time_s": 15.1,
+      "key": "up"
+    },
+    {
+      "time_s": 15.15,
+      "key": "up"
+    },
+    {
+      "time_s": 15.200000000000001,
+      "key": "up"
+    },
+    {
+      "time_s": 15.25,
+      "key": "up"
+    },
+    {
+      "time_s": 15.3,
+      "key": "up"
+    },
+    {
+      "time_s": 15.35,
+      "key": "up"
+    },
+    {
+      "time_s": 15.4,
+      "key": "up"
+    },
+    {
+      "time_s": 15.450000000000001,
+      "key": "up"
+    },
+    {
+      "time_s": 15.5,
+      "key": "up"
+    },
+    {
+      "time_s": 15.55,
+      "key": "up"
+    },
+    {
+      "time_s": 15.6,
+      "key": "up"
+    }
+  ],
+  "recording_method": "Uninterrupted X11 screen capture of the live MuJoCo window; actual XTest Up/Down key events",
+  "camera": "Follows the robot; physical position is not modified"
+}

@@ -1,0 +1,8 @@
+{
+  "source_repository": "https://github.com/LampLighterLab/BigRedGym",
+  "upstream_base_commit": "7fd07c2f6317ee00025eb45f8ae8c89be0cf7bf5",
+  "implementation_commit": "4be39dbf1571473d9a2087fe5244f47ddcf94d97",
+  "snapshot_tree": "6749fb67560f2d3b145a30fa16ad41323c526282",
+  "snapshot_directory": "BigRedGym",
+  "contents": "Tracked source snapshot, height-tracking report and data; video and training outputs excluded."
+}
